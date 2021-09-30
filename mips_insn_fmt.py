@@ -59,6 +59,14 @@ def rr(r):
 	return REGISTERS[int(r)]
 
 
+def show_bin_str(s):
+	print("\n\n[+]", s)
+	print("    ", end='')
+	for i in range(0, 32, 4):
+		print(s[i:i+4] + ' ', end='')
+	print()
+
+
 def get_format(s):
 	op = b2h(s[0:6])
 	funct = b2h(s[-6:])
@@ -81,6 +89,7 @@ def parse_R_format(s):
 	mnemonic, op, funct, fmt = insn
 	op, rs, rt, rd, shamt, funct = s[0:6], s[6:11], s[11:16], s[16:21], s[21:26], s[-6:]
 
+	show_bin_str(s)
 	print("\n    [{} ${}, ${}, ${}]".format(mnemonic, rr(b2d(rd)), rr(b2d(rs)), rr(b2d(rt))), end=" ")
 	print(fmt + "-Format")
 	print("    op     rs    rt    rd    shamt funct")
@@ -98,6 +107,7 @@ def parse_I_format(s):
 	mnemonic, op, funct, fmt = insn
 	op, rs, rt, imm = s[0:6], s[6:11], s[11:16], s[16:]
 
+	show_bin_str(s)
 	print_imm = imm + '00' if (mnemonic[:1] == 'b') else imm
 	print("\n    [{} ${}, ${}, {}]".format(mnemonic, rr(b2d(rt)), rr(b2d(rs)), b2d(print_imm)), end=" ")
 	print(fmt + "-Format")
@@ -123,6 +133,7 @@ def parse_J_format(s):
 	mnemonic, op, funct, fmt = insn
 	op, addr = s[0:6], s[6:]
 
+	show_bin_str(s)
 	print("\n    [{} {}]".format(mnemonic, b2h(addr+"00")), end=" ")
 	print(fmt + "-Format")
 	print("    op addr")
@@ -133,13 +144,6 @@ def parse_J_format(s):
 def parse(insn):
 	bin_str = format(insn, "032b")
 	
-	# bin_str_navie = "0b"
-	# for i in range(0, 32, 4):
-	# 	bin_str_navie += format(insn, "032b")[i:i+4] + ' '
-	# print("\n\n", bin_str_navie)
-
-	# print("\n\n\n", bin_str)
-
 	fmt = get_format(bin_str)
 
 	if fmt == "R":
@@ -149,13 +153,14 @@ def parse(insn):
 	elif fmt == "J":
 		parse_J_format(bin_str)
 
-
 def main():	
 	arr = [0x3c101001, 0x20110005, 0x00004020, 0x00009020, 0x0111482a, 0x11200006, 0x8e0a0000, 0x024a9020, 0x21080001, 0x22100004, 0x0810000d, 0x03e00008]
 
+	# for insn in arr:
+	# 	parse(insn)
+
 	parse(arr[0])
-	for insn in arr:
-		parse(insn)
+	parse(arr[1])
 
 
 if __name__ == "__main__":
