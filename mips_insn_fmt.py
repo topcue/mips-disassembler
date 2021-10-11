@@ -70,7 +70,6 @@ def b2d(b):
 def rr(r):
 	return REGISTERS[int(r)]
 
-
 def show_bin_str(s):
 	print("\n\n[+]", s)
 	print("    ", end='')
@@ -92,11 +91,18 @@ def get_format(s):
 
 
 def parse_R_format(s):
+	op = b2h(s[0:6])
 	funct = b2h(s[-6:])
+	
 
-	for insn in INSTRUCTIONS_TABLE:
-		if insn[2] == funct:
-			break
+	if op == "0x00":
+		for insn in INSTRUCTIONS_TABLE:
+			if insn[2] == funct:
+				break
+	else:	# op == "0x10"
+		for insn in INSTRUCTIONS_TABLE:
+			if insn[0] == "mfc0":
+				break
 
 	mnemonic, op, funct, fmt = insn
 	op, rs, rt, rd, shamt, funct = s[0:6], s[6:11], s[11:16], s[16:21], s[21:26], s[-6:]
