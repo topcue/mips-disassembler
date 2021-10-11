@@ -1,53 +1,65 @@
-# table from https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats
+# @author topcue
+
+# todo:
+# negative integer
+# ex) [bne  $4, $0, -4] -> [bne $r0, $a0, 262140] (wrong)
+
+
+# https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats
 INSTRUCTIONS_TABLE = [
-	['Mnemonic', 'Opcode', 'Funct', 'Type'], 
-	['addi', '0x08', 'NA', 'I'], 
-	['addiu', '0x09', 'NA', 'I'], 
-	['andi', '0x0C', 'NA', 'I'], 
-	['beq', '0x04', 'NA', 'I'], 
-	['blez', '0x06', 'NA', 'I'], 
-	['bne', '0x05', 'NA', 'I'], 
-	['bgtz', '0x07', 'NA', 'I'], 
-	['lb', '0x20', 'NA', 'I'], 
-	['lbu', '0x24', 'NA', 'I'], 
-	['lhu', '0x25', 'NA', 'I'], 
-	['lui', '0x0F', 'NA', 'I'], 
-	['lw', '0x23', 'NA', 'I'], 
-	['ori', '0x0D', 'NA', 'I'], 
-	['sb', '0x28', 'NA', 'I'], 
-	['sh', '0x29', 'NA', 'I'], 
-	['slti', '0x0A', 'NA', 'I'], 
-	['sltiu', '0x0B', 'NA', 'I'], 
-	['sw', '0x2B', 'NA', 'I'], 
-	['j', '0x02', 'NA', 'J'], 
-	['jal', '0x03', 'NA', 'J'], 
-	['jalr', '0x00', '0x09', 'J'], 
-	['add', '0x00', '0x20', 'R'], 
-	['addu', '0x00', '0x21', 'R'], 
-	['and', '0x00', '0x24', 'R'], 
-	['div', '0x00', '0x1A', 'R'], 
-	['divu', '0x00', '0x1B', 'R'], 
-	['jr', '0x00', '0x08', 'R'], 
-	['mfhi', '0x00', '0x10', 'R'], 
-	['mthi', '0x00', '0x11', 'R'], 
-	['mflo', '0x00', '0x12', 'R'], 
-	['mtlo', '0x00', '0x13', 'R'], 
-	['mfc0', '0x10', 'NA', 'R'], 
-	['mult', '0x00', '0x18', 'R'], 
-	['multu', '0x00', '0x19', 'R'], 
-	['nor', '0x00', '0x27', 'R'], 
-	['xor', '0x00', '0x26', 'R'], 
-	['or', '0x00', '0x25', 'R'], 
-	['slt', '0x00', '0x2A', 'R'], 
-	['sltu', '0x00', '0x2B', 'R'], 
-	['sll', '0x00', '0x00', 'R'], 
-	['srl', '0x00', '0x02', 'R'], 
-	['sra', '0x00', '0x03', 'R'], 
-	['sub', '0x00', '0x22', 'R'], 
+	['Mnemonic', 'Opcode', 'Funct', 'Type'],
+	['addi', '0x08', 'NA', 'I'],
+	['addiu', '0x09', 'NA', 'I'],
+	['andi', '0x0C', 'NA', 'I'],
+	['beq', '0x04', 'NA', 'I'],
+	['blez', '0x06', 'NA', 'I'],
+	['bne', '0x05', 'NA', 'I'],
+	['bgtz', '0x07', 'NA', 'I'],
+	['lb', '0x20', 'NA', 'I'],
+	['lbu', '0x24', 'NA', 'I'],
+	['lhu', '0x25', 'NA', 'I'],
+	['lui', '0x0F', 'NA', 'I'],
+	['lw', '0x23', 'NA', 'I'],
+	['ori', '0x0D', 'NA', 'I'],
+	['sb', '0x28', 'NA', 'I'],
+	['sh', '0x29', 'NA', 'I'],
+	['slti', '0x0A', 'NA', 'I'],
+	['sltiu', '0x0B', 'NA', 'I'],
+	['sw', '0x2B', 'NA', 'I'],
+	['j', '0x02', 'NA', 'J'],
+	['jal', '0x03', 'NA', 'J'],
+	['jalr', '0x00', '0x09', 'J'],
+	['add', '0x00', '0x20', 'R'],
+	['addu', '0x00', '0x21', 'R'],
+	['and', '0x00', '0x24', 'R'],
+	['div', '0x00', '0x1A', 'R'],
+	['divu', '0x00', '0x1B', 'R'],
+	['jr', '0x00', '0x08', 'R'],
+	['mfhi', '0x00', '0x10', 'R'],
+	['mthi', '0x00', '0x11', 'R'],
+	['mflo', '0x00', '0x12', 'R'],
+	['mtlo', '0x00', '0x13', 'R'],
+	['mfc0', '0x10', '0x00', 'R'],	# TODO;
+	['mult', '0x00', '0x18', 'R'],
+	['multu', '0x00', '0x19', 'R'],
+	['nor', '0x00', '0x27', 'R'],
+	['xor', '0x00', '0x26', 'R'],
+	['or', '0x00', '0x25', 'R'],
+	['slt', '0x00', '0x2A', 'R'],
+	['sltu', '0x00', '0x2B', 'R'],
+	['sll', '0x00', '0x00', 'R'],
+	['srl', '0x00', '0x02', 'R'],
+	['sra', '0x00', '0x03', 'R'],
+	['sub', '0x00', '0x22', 'R'],
 	['subu', '0x00', '0x2', 'R']
 ]
 
-REGISTERS = ['r0', 'at', 'v0', 'v1', 'a0', 'a1', 'a2', 'a3', 't0', 't1', 't2', 't3', 't4', 't5', 't6', 't7', 's0', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 't8', 't9', 'k0', 'k1', 'gp', 'sp', 's8', 'ra']
+REGISTERS = [
+	'r0', 'at', 'v0', 'v1', 'a0', 'a1', 'a2', 'a3', 
+	't0', 't1', 't2', 't3', 't4', 't5', 't6', 't7',
+	's0', 's1', 's2', 's3', 's4', 's5', 's6', 's7',
+	't8', 't9', 'k0', 'k1', 'gp', 'sp', 's8', 'ra'
+]
 
 def b2h(b, n="02X"):
 	return "0x" + format(int(b, 2), n)
@@ -71,9 +83,9 @@ def get_format(s):
 	op = b2h(s[0:6])
 	funct = b2h(s[-6:])
 
-	if	(op in ("0x02", "0x03")) or (op == "0x00" and funct == "0x09"):
-		return "J"
-	if op == "0x00":
+	if (op in ("0x02", "0x03")) or (op == "0x00" and funct == "0x09"):
+			return "J"
+	if (op == "0x00") or (op == "0x10"):
 		return "R"
 	else:
 		return "I"
@@ -153,14 +165,15 @@ def parse(insn):
 	elif fmt == "J":
 		parse_J_format(bin_str)
 
+
 def main():	
 	arr = [0x3c101001, 0x20110005, 0x00004020, 0x00009020, 0x0111482a, 0x11200006, 0x8e0a0000, 0x024a9020, 0x21080001, 0x22100004, 0x0810000d, 0x03e00008]
 
 	# for insn in arr:
 	# 	parse(insn)
 
-	parse(arr[0])
-	parse(arr[1])
+	parse(0x1480ffff)
+	parse(0x0c100045)
 
 
 if __name__ == "__main__":
