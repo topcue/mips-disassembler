@@ -161,7 +161,6 @@ def parse_J_format(s):
 
 def parse(insn):
 	bin_str = format(insn, "032b")
-	
 	fmt = get_format(bin_str)
 
 	if fmt == "R":
@@ -172,11 +171,10 @@ def parse(insn):
 		parse_J_format(bin_str)
 
 
-def main():	
+def main():
 	arr = [0x3c101001, 0x20110005, 0x00004020, 0x00009020, 0x0111482a, 0x11200006, 0x8e0a0000, 0x024a9020, 0x21080001, 0x22100004, 0x0810000d, 0x03e00008]
-
-	# for insn in arr:
-	# 	parse(insn)
+	for insn in arr:
+		parse(insn)
 
 	parse(0x1480ffff)
 	parse(0x0c100045)
