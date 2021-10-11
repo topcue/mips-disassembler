@@ -39,7 +39,7 @@ INSTRUCTIONS_TABLE = [
 	['mthi', '0x00', '0x11', 'R'],
 	['mflo', '0x00', '0x12', 'R'],
 	['mtlo', '0x00', '0x13', 'R'],
-	['mfc0', '0x10', '0x00', 'R'],	# TODO;
+	['mfc0', '0x10', 'NA', 'R'],	# TODO;
 	['mult', '0x00', '0x18', 'R'],
 	['multu', '0x00', '0x19', 'R'],
 	['nor', '0x00', '0x27', 'R'],
