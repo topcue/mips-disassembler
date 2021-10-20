@@ -7,6 +7,7 @@
 # https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats
 INSTRUCTIONS_TABLE = [
 	['Mnemonic', 'Opcode', 'Funct', 'Type'],
+	\
 	['addi',  '0x08', 'NA', 'I'],
 	['addiu', '0x09', 'NA', 'I'],
 	['andi',  '0x0C', 'NA', 'I'],
