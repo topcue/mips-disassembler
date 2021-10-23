@@ -18,7 +18,7 @@ None
 
 Jus call `parse` function as follows.
 
-```
+```python
 parse(0x3c101001)
 ```
 
