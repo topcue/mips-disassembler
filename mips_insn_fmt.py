@@ -178,7 +178,7 @@ def main():
 	# for insn in arr:
 	# 	parse(insn)
 
-	parse(0x00094024)
+	parse(0x8ce5fffc)
 
 
 if __name__ == "__main__":
