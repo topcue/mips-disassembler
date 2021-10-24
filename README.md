@@ -11,7 +11,7 @@ A (very small and cute) project to disassemble MIPS instructions based on format
 - This project parses the hex value of the 32-bit instruction corresponding to the **MIPS code**, **analyzes the format**, and **disassembles it**.
 
 ## Getting Started
-### Depencies
+### Dependencies
 None
 
 ## Usage
