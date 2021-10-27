@@ -3,10 +3,8 @@
   - [Overview](#overview) 
   - [Getting Started](#getting-started)
   - [Usage](#Usage)
-## About this project
-A (very small and cute) project to disassemble MIPS instructions based on format parsing.
-
 ## Overview
+- A (very small and cute) project to disassemble MIPS instructions based on format parsing.
 - One of the homeworks in the **Computer Structure subject** was to manually analyze the format of MIPS instructions. And I came to implement this tool.
 - This project parses the hex value of the 32-bit instruction corresponding to the **MIPS code**, **analyzes the format**, and **disassembles it**.
 
@@ -30,8 +28,4 @@ Then the output is as follows.
     001111 00000 10000 0001000000000001
     0x0F   0x00  0x10  0x1001
 ```
-
-
-
-
 
